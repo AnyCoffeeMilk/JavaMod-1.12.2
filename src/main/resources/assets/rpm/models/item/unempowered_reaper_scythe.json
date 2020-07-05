@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "rpm:items/unempowered_reaper_scythe"
+  }
+}

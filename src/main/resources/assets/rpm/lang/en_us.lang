@@ -1,0 +1,18 @@
+//Items
+item.void_ingot.name=Void Ingot
+item.void_nugget.name=Void Nugget
+item.void_dust.name=Void Dust
+
+//Tools
+item.scythe.name=Scythe
+item.unempowered_reaper_scythe.name=Unempowered Reaper Scythe
+item.reaper_scythe.name=Reaper Scythe
+
+//Blocks
+tile.dead_stone.name=Dead Stone
+
+//Creative Tab
+itemGroup.modtab=Reaper
+
+//Enchantments
+enchantment.blood_binding_curse=Blood Binding
