@@ -42,4 +42,13 @@ public class ReaperScythe extends ItemSword implements IHasModel
 			items.add(item);
 		}
 	}
+	
+	public void onUpdate(ItemStack stack, World world, Entity entity, int i, boolean bool) {
+		super.onUpdate(stack, world, entity, i, bool);
+		if(stack.isItemEnchanted() == false) 
+		{
+			stack.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
+			super.onUpdate(stack, world, entity, i, bool);
+		}
+	}
 }
