@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.mods.reaper.items.ItemBase;
 import com.mods.reaper.items.ReaperScythe;
+import com.mods.reaper.items.Scythe;
+import com.mods.reaper.items.UnempoweredReaperScythe;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -20,8 +22,8 @@ public class ModItems
 	public static final Item VOID_NUGGET = new ItemBase("void_nugget");
 	public static final Item VOID_DUST = new ItemBase("void_dust");
 	
-	//Tools
-	public static final Item SCYTHE = new ItemBase("scythe");
-	public static final Item UNEMPOWERED_REAPER_SCYTHE = new ItemBase("unempowered_reaper_scythe");
+	//Scythes
+	public static final Item SCYTHE = new Scythe("scythe");
+	public static final Item UNEMPOWERED_REAPER_SCYTHE = new UnempoweredReaperScythe("unempowered_reaper_scythe");
 	public static final Item REAPER_SCYTHE = new ReaperScythe("reaper_scythe");
 }
