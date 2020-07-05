@@ -36,12 +36,9 @@ public class ReaperScythe extends ItemSword implements IHasModel
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
 	{
-		ItemStack item = items.get(i);
-		if (item.getItem() == ModItems.REAPER_SCYTHE)
-		{
-			item.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
-			items.add(item);
-		}
+		ItemStack item = new ItemStack(ModItems.REAPER_SCYTHE);
+		item.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
+		items.add(item);
 	}
 	
 //	public void onUpdate(ItemStack stack, World world, Entity entity, int i, boolean bool) {
