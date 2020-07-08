@@ -14,7 +14,7 @@ public class EnchantmentBloodBindingCurse extends Enchantment
 {
 	public EnchantmentBloodBindingCurse()
 	{
-		 super(Rarity.VERY_RARE, EnumEnchantmentType.ARMOR, new EntityEquipmentSlot[] { EntityEquipmentSlot.MAINHAND });
+		 super(Rarity.VERY_RARE, EnumEnchantmentType.WEAPON, new EntityEquipmentSlot[] { EntityEquipmentSlot.MAINHAND });
 		 this.setName("blood_binding_curse");
 		 this.setRegistryName(new ResourceLocation(Reference.MOD_ID + ":blood_binding_curse"));
 		 

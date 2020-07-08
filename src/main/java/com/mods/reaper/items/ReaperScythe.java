@@ -1,6 +1,11 @@
 package com.mods.reaper.items;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.mods.reaper.Main;
+import com.mods.reaper.events.SoulCounter;
 import com.mods.reaper.init.ModEnchantments;
 import com.mods.reaper.init.ModItems;
 import com.mods.reaper.util.IHasModel;
@@ -9,6 +14,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
@@ -27,6 +33,7 @@ public class ReaperScythe extends ItemSword implements IHasModel
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Main.modtab);
+		addInformation(item, world, lore, flagIn);
 		
 		ModItems.ITEMS.add(this);
 	}
@@ -70,6 +77,15 @@ public class ReaperScythe extends ItemSword implements IHasModel
         }
         return true;
     }
+	
+	@Override
+	public void addInformation(ItemStack item, World world,List<String> lore,ITooltipFlag flagIn) 
+	{
+		if (item.getItem() == ModItems.UNEMPOWERED_REAPER_SCYTHE)
+		{
+			lore.add(1, SoulCounter.Souls.);
+		}
+	}
 	
 	public void onUpdate(ItemStack stack, World world, Entity entity, int i, boolean bool) {
 		super.onUpdate(stack, world, entity, i, bool);

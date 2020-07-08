@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EmpowerReaperScythe 
 {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
-	public static void onVillagerKill(AttackEntityEvent evt)
+	public static void onPlayerKillMob(AttackEntityEvent evt)
 	{
 		EntityPlayer player = evt.getEntityPlayer();
 		Entity e = evt.getTarget();
@@ -31,11 +31,10 @@ public class EmpowerReaperScythe
 		SoundEvent event = new SoundEvent(location);
 		if (e instanceof EntityVillager)
 		{
-			if (HoldingReaperScythe(player))
+			if (player.getHeldItemMainhand().getItem() == ModItems.UNEMPOWERED_REAPER_SCYTHE)
 			{
 				if (world.isRemote)
 				{
-					System.out.println("1");
 					EntityLightningBolt lb = new EntityLightningBolt(world, e.posX, e.posY, e.posZ, true);
 		            world.spawnEntity(lb);
 				}
@@ -44,14 +43,5 @@ public class EmpowerReaperScythe
 				player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ModItems.REAPER_SCYTHE));
 			}
 		}
-	}
-	
-	private static boolean HoldingReaperScythe(EntityPlayer player) 
-	{
-		if (player.getHeldItemMainhand().getItem() == ModItems.UNEMPOWERED_REAPER_SCYTHE)
-		{
-			return true;
-		}
-		return false;
 	}
 }
