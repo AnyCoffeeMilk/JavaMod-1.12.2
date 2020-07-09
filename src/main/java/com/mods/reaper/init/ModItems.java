@@ -3,7 +3,6 @@ package com.mods.reaper.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mods.reaper.items.Boook;
 import com.mods.reaper.items.ItemBase;
 import com.mods.reaper.items.ReaperScythe;
 
@@ -25,7 +24,4 @@ public class ModItems
 	public static final Item SCYTHE = new ItemBase("scythe");
 	public static final Item UNEMPOWERED_REAPER_SCYTHE = new ItemBase("unempowered_reaper_scythe");
 	public static final Item REAPER_SCYTHE = new ReaperScythe("reaper_scythe");
-	
-	//Misc
-	public static final Item BOOOK = new Boook("boook");
 }
