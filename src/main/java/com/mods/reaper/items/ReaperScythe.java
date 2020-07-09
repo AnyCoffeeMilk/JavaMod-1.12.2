@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ReaperScythe extends ItemSword implements IHasModel
 {
+
 	public ReaperScythe(String name) {
 		super(ToolMaterial.IRON);
 		setUnlocalizedName(name);
@@ -35,11 +36,17 @@ public class ReaperScythe extends ItemSword implements IHasModel
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
 	{
-		if (tab == Main.modtab) 
-		{
-			ItemStack item = new ItemStack(ModItems.REAPER_SCYTHE);
-			item.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
-			items.add(item);
-		}
+		ItemStack item = new ItemStack(ModItems.REAPER_SCYTHE);
+		item.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
+		items.add(item);
 	}
+	
+//	public void onUpdate(ItemStack stack, World world, Entity entity, int i, boolean bool) {
+//		super.onUpdate(stack, world, entity, i, bool);
+//
+//		if(stack.isItemEnchanted() == false) {
+//			stack.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
+//			super.onUpdate(stack, world, entity, i, bool);
+//		}
+//	}
 }
