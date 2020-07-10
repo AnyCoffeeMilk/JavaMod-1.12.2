@@ -6,7 +6,12 @@ import com.mods.reaper.init.ModTab;
 import com.mods.reaper.util.IHasModel;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.world.World;
 
 public class Boook extends Item implements IHasModel
 {
@@ -23,5 +28,17 @@ public class Boook extends Item implements IHasModel
 	public void registerModels() 
 	{
 		Main.proxy.registerItemRenderer(this, 0, "inventory");
+	}
+	
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
+	{
+		ItemStack item = playerIn.getHeldItem(handIn);
+		if (item.getItem() == ModItems.BOOOK) 
+		{
+			System.out.println("onItemRightClick");
+			return super.onItemRightClick(worldIn, playerIn, handIn);
+		}
+		return null;
 	}
 }
