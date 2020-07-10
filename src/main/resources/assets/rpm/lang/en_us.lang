@@ -2,17 +2,18 @@
 item.void_ingot.name=Void Ingot
 item.void_nugget.name=Void Nugget
 item.void_dust.name=Void Dust
+item.boook.name=Boook
 
 //Tools
 item.scythe.name=Scythe
 item.unempowered_reaper_scythe.name=Unempowered Reaper Scythe
-item.reaper_scythe.name=Reaper Scythe
+item.reaper_scythe.name=§4Reaper Scythe
 
 //Blocks
 tile.dead_stone.name=Dead Stone
 
 //Creative Tab
-itemGroup.modtab=Reaper
+itemGroup.modtab=§4Reaper
 
 //Enchantments
 enchantment.blood_binding_curse=Blood Binding
