@@ -8,4 +8,7 @@ public class Reference
 	public static final String ACCEPTED_VERSION = "[1.12.2]";
 	public static final String CLIENT_PROXY_CLASS = "com.mods.reaper.proxy.ClientProxy";
 	public static final String COMMON_PROXY_CLASS = "com.mods.reaper.proxy.CommonProxy";
+	
+	//Gui ID
+	public static final int SCYTHE_UPGRADE = 0;
 }

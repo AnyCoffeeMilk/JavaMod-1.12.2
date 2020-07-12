@@ -1,9 +1,12 @@
 package com.mods.reaper.util.handlers;
 
+import com.mods.reaper.Main;
 import com.mods.reaper.init.ModBlocks;
 import com.mods.reaper.init.ModEnchantments;
 import com.mods.reaper.init.ModItems;
+import com.mods.reaper.init.ModRecipes;
 import com.mods.reaper.util.IHasModel;
+import com.mods.reaper.world.ModWorldGen;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -12,6 +15,8 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @EventBusSubscriber
 public class RegistryHandler 
@@ -52,5 +57,16 @@ public class RegistryHandler
 				((IHasModel)block).registerModels();
 			}
 		}
+	}
+	
+	public static void preInitRegistries()
+	{
+		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+	}
+	
+	public static void InitRegistries()
+	{
+		ModRecipes.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new ModGuiHandler());
 	}
 }
