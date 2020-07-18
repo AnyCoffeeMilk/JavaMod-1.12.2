@@ -8,6 +8,9 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -31,27 +34,21 @@ public class EmpowerReaperScythe
 		SoundEvent event = new SoundEvent(location);
 		if (e instanceof EntityVillager)
 		{
-			if (HoldingReaperScythe(player))
+			if (player.getHeldItemMainhand().getItem() == ModItems.UNEMPOWERED_REAPER_SCYTHE)
 			{
 				if (world.isRemote)
 				{
-					System.out.println("1");
 					EntityLightningBolt lb = new EntityLightningBolt(world, e.posX, e.posY, e.posZ, true);
 		            world.spawnEntity(lb);
 				}
 				player.playSound(event, 1.0F, 1.0F);
 				e.attackEntityFrom(DamageSource.causePlayerDamage(player), ((EntityVillager) e).getHealth());
-				player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ModItems.REAPER_SCYTHE));
+				ItemStack stack = new ItemStack(ModItems.REAPER_SCYTHE);
+				player.setHeldItem(EnumHand.MAIN_HAND, stack);
+				NBTTagCompound nbt = new NBTTagCompound();
+			    nbt.setInteger("Souls", 0);
+			    stack.setTagCompound(nbt);
 			}
 		}
-	}
-	
-	private static boolean HoldingReaperScythe(EntityPlayer player) 
-	{
-		if (player.getHeldItemMainhand().getItem() == ModItems.UNEMPOWERED_REAPER_SCYTHE)
-		{
-			return true;
-		}
-		return false;
 	}
 }

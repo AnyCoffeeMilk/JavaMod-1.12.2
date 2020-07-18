@@ -67,16 +67,19 @@ public class ReaperScythe extends ItemSword implements IHasModel, ICapabilityPro
 	}
 	
 	@Override
-	public boolean canHarvestBlock(IBlockState blockIn) { return false; }
+	public boolean canHarvestBlock(IBlockState blockIn) 
+	{ 
+		return false; 
+	}
 	
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
 	{
 		if (tab == Main.modtab) 
 		{
-			ItemStack item = new ItemStack(ModItems.REAPER_SCYTHE);
-			item.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
-			items.add(item);
+			ItemStack stack = new ItemStack(ModItems.REAPER_SCYTHE);
+			stack.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
+			items.add(stack);
 		}
 	}
 	
@@ -100,25 +103,21 @@ public class ReaperScythe extends ItemSword implements IHasModel, ICapabilityPro
 	public void onUpdate(ItemStack stack, World world, Entity entity, int i, boolean bool) 
 	{
 		super.onUpdate(stack, world, entity, i, bool);
-		if(stack.isItemEnchanted() == false) 
+		if(!stack.isItemEnchanted()) 
 		{
 			stack.addEnchantment(ModEnchantments.BLOOD_BINDING_CURSE, 1);
-			ITooltipFlag flagIn = null;
-			List<String> list = stack.getTooltip(player, flagIn);
-			for (int j = 0; j < list.size(); j++)
-			{
-				String nbt = list.get(j);
-				if (nbt.contains("Soul:"))
-				{
-					NBTTagCompound tag = stack.getTagCompound();
-					NBTTagList soullore = new NBTTagList();
-					soullore.appendTag(new NBTTagString("§4Soul:0"));
-					stack.setTagInfo("Lore", soullore);
-				}
-			}
 			super.onUpdate(stack, world, entity, i, bool);
 		}
 	}
+	
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> lore, ITooltipFlag flagIn)
+    {
+        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Souls"))
+        {
+            lore.add("§cSouls : " + Integer.toString(stack.getTagCompound().getInteger("Souls")));
+        }
+    }
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
