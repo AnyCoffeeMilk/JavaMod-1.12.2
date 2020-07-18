@@ -15,6 +15,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -26,7 +30,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @EventBusSubscriber(modid = Reference.MOD_ID)
 public class SoulCounter
 {
-	public static int Souls = 0;
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onPlayerKillMob(LivingDeathEvent evt) 
 	{
@@ -37,11 +40,24 @@ public class SoulCounter
 			EntityPlayer player = (EntityPlayer) source.getTrueSource();
 			ItemStack item = player.getHeldItemMainhand();
 			World world = player.getEntityWorld();
-			ITooltipFlag flagIn;
 			List<String> lore = new ArrayList<String>();
 			if (item.getItem() == ModItems.UNEMPOWERED_REAPER_SCYTHE)
 			{
-				Souls = Souls + 1;
+				ITooltipFlag flagIn = null;
+				List<String> list = item.getTooltip(player, flagIn);
+				for (int i = 0; i < list.size(); i++)
+				{
+					String nbt = list.get(i);
+					if (nbt.contains("§4Soul:"))
+					{
+						int Souls = Integer.parseInt(nbt.replace("§4Soul:", ""));
+						Souls = Souls + 1;
+						NBTTagCompound tag = item.getTagCompound();
+						NBTTagList soullore = new NBTTagList();
+						soullore.appendTag(new NBTTagString("§4Soul:"+Souls));
+						item.setTagInfo("Lore", soullore);
+					}
+				}
 			}
 		}
 	}
