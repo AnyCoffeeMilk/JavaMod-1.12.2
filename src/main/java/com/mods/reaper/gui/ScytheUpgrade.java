@@ -23,7 +23,8 @@ public class ScytheUpgrade extends GuiContainer
 	private IInventory playerInv;
 	private final ContainerScytheUpgrade rsInv;
 
-	public ScytheUpgrade(IInventory playerInv, ReaperScythe rs) {
+	public ScytheUpgrade(IInventory playerInv, ReaperScythe rs) 
+	{
 		super(new ContainerScytheUpgrade(playerInv, rs));
 		this.rs = rs;
 		this.playerInv = playerInv;
@@ -31,13 +32,15 @@ public class ScytheUpgrade extends GuiContainer
 	}
 	
 	@Override
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) 
+	{
 		String name = I18n.format("Scythe Upgrade");
 		this.fontRenderer.drawString(name, (this.xSize / 2 - this.fontRenderer.getStringWidth(name) / 2) + 3, 8, 4210752);
 	}
 	
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
+	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.getTextureManager().bindTexture(TEXTURES);
 		drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);

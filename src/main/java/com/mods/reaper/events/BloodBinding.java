@@ -1,11 +1,9 @@
 package com.mods.reaper.events;
 
 import java.util.ListIterator;
-import java.util.UUID;
 
 import com.mods.reaper.init.ModEnchantments;
 import com.mods.reaper.util.Reference;
-import com.mojang.authlib.GameProfile;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;

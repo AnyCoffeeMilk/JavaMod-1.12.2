@@ -9,8 +9,6 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -20,6 +18,8 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+
 
 @EventBusSubscriber(modid = Reference.MOD_ID)
 public class EmpowerReaperScythe 
@@ -46,7 +46,7 @@ public class EmpowerReaperScythe
 				ItemStack stack = new ItemStack(ModItems.REAPER_SCYTHE);
 				player.setHeldItem(EnumHand.MAIN_HAND, stack);
 				NBTTagCompound nbt = new NBTTagCompound();
-			    nbt.setInteger("Souls", 0);
+			    nbt.setInteger("Souls", 1);
 			    stack.setTagCompound(nbt);
 			}
 		}

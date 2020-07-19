@@ -23,7 +23,6 @@ public class ModGuiHandler implements IGuiHandler
 			ItemStack stack = player.getHeldItemMainhand();
 			if (stack.getItem() == ModItems.REAPER_SCYTHE)
 			{
-				System.out.println("server");
 				ReaperScythe rs = (ReaperScythe)stack.getItem();
 				return new ContainerScytheUpgrade(player.inventory, rs);
 			}
@@ -39,7 +38,6 @@ public class ModGuiHandler implements IGuiHandler
 			ItemStack stack = player.getHeldItemMainhand();
 			if (stack.getItem() == ModItems.REAPER_SCYTHE)
 			{
-				System.out.println("client");
 				ReaperScythe rs = (ReaperScythe)stack.getItem();
 				return new ScytheUpgrade(player.inventory, rs);
 			}
